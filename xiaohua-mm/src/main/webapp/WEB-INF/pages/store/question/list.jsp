@@ -36,7 +36,8 @@
         <small>题目管理</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="all-admin-index.html"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li><a href="${ctx}/system/user?operation=home"><i class="fa fa-dashboard"></i> 首页
+        </a></li>
     </ol>
 </section>
 <!-- 内容头部 /-->
@@ -118,9 +119,9 @@
                         <td>${o.state eq "1" ? "<font color='green'>启用</font>" : "<font color='red'>禁用</font>"}</td>
                         <td>
                             <c:choose>
-                                <c:when test="${o.reviewStatus eq '1'}"><font color="green">审核通过</font></c:when>
+                                <c:when test="${o.reviewStatus eq '1'}"><span style="color: green; ">审核通过</span></c:when>
                                 <c:when test="${o.reviewStatus eq '0'}">审核中</c:when>
-                                <c:when test="${o.reviewStatus eq '-1'}"><font color="red">审核不通过</font></c:when>
+                                <c:when test="${o.reviewStatus eq '-1'}"><span style="color: red; ">审核不通过</span></c:when>
                             </c:choose>
                         </td>
                         <th class="text-center">

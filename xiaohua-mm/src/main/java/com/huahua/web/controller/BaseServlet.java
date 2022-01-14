@@ -1,18 +1,16 @@
 package com.huahua.web.controller;
 
 import com.huahua.config.SpringConfig;
+import com.huahua.service.front.MemberService;
 import com.huahua.service.store.*;
-import com.huahua.service.system.DeptService;
-import com.huahua.service.system.ModuleService;
-import com.huahua.service.system.RoleService;
-import com.huahua.service.system.UserService;
+import com.huahua.service.system.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
 
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 @SuppressWarnings("all")
 public class BaseServlet extends HttpServlet {
 
+
     protected CompanyService companyService;
     protected DeptService deptService;
     protected UserService userService;
@@ -32,6 +31,9 @@ public class BaseServlet extends HttpServlet {
     protected QuestionItemService questionItemService;
     protected RoleService roleService;
     protected ModuleService moduleService;
+    protected MemberService memberService;
+    protected ExamineLogService examineLogService;
+    protected SysLogService sysLogService;
 
 
     protected final String list = "list";
@@ -53,7 +55,12 @@ public class BaseServlet extends HttpServlet {
         questionItemService = (QuestionItemService) ctx.getBean("questionItemService");
         roleService = (RoleService) ctx.getBean("roleService");
         moduleService = (ModuleService) ctx.getBean("moduleService");
+        memberService = (MemberService) ctx.getBean("memberService");
+        examineLogService = (ExamineLogService) ctx.getBean("examineLogService");
+        sysLogService = (SysLogService) ctx.getBean("sysLogService");
     }
+
+
 
     protected int toPage(HttpServletRequest request,int page){
         String page1 = "page";
@@ -70,4 +77,5 @@ public class BaseServlet extends HttpServlet {
         }
         return size;
     }
+
 }

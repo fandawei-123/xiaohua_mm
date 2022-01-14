@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
-                        <label class="">${error}</label>
+                        <label class="" style="color: red">${error}</label>
                     </div>
                 </div>
                 <div class="col-xs-4">

@@ -24,7 +24,8 @@
             <small>用户管理</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="all-admin-index.html"><i class="fa fa-dashboard"></i> 首页</a></li>
+            <li><a href="${ctx}/system/user?operation=home"><i class="fa fa-dashboard"></i> 首页
+            </a></li>
         </ol>
     </section>
     <!-- 内容头部 /-->
@@ -40,21 +41,24 @@
                 <form id="urform" action="${ctx}/system/user?operation=updateRole" method="post">
                     <input type="hidden" name="userId" value="${user.id}"/>
                     <div class="textbox" id="centerTextbox">
-                            <div style="text-align:left">
-                                <c:forEach items="${roleList}" var="role" varStatus="vs">
+                        <div style="text-align:left">
+                            <c:forEach items="${roleList}" var="role" varStatus="vs">
                                      <span style="padding:3px;margin-right:30px;width: 160px;display: inline-block">
-                                         <input type="checkbox" name="roleIds" value="${role.id}" ${role.remark}/>${role.name}
+                                         <input type="checkbox" name="roleIds"
+                                                value="${role.id}" ${role.remark}/>${role.name}
                                      </span>
-                                </c:forEach>
-                            </div>
+                            </c:forEach>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
 
         <div class="box-tools text-center">
             <button type="button" class="btn bg-maroon" onclick='document.getElementById("urform").submit()'>保存</button>
-            <button type="button" class="btn bg-default" onclick='location.href="${ctx}/system/user?operation=list"'>返回</button>
+            <button type="button" class="btn bg-default" onclick='location.href="${ctx}/system/user?operation=list"'>
+                返回
+            </button>
         </div>
     </section>
 </div>

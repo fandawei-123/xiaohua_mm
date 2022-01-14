@@ -1,5 +1,6 @@
 package com.huahua.domain.store;
 
+import com.huahua.domain.system.User;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -41,9 +42,11 @@ public class Question {
     private String reviewStatus;
     //审核状态  -1 审核不通过  0 审核中   1 审核通过
     private Date createTime;
+    private String createUserId;
 
     private Company company;
     private Catalog catalog;
+    private User createUser;
 
     public String getPicture() {
         return picture;
@@ -149,6 +152,14 @@ public class Question {
         this.createTime = createTime;
     }
 
+    public String getCreateUserId() {
+        return createUserId;
+    }
+
+    public void setCreateUserId(String createUserId) {
+        this.createUserId = createUserId;
+    }
+
     public Company getCompany() {
         return company;
     }
@@ -165,25 +176,11 @@ public class Question {
         this.catalog = catalog;
     }
 
+    public User getCreateUser() {
+        return createUser;
+    }
 
-    @Override
-    public String toString() {
-        return "Question{" +
-                "id='" + id + '\'' +
-                ", companyId='" + companyId + '\'' +
-                ", catalogId='" + catalogId + '\'' +
-                ", remark='" + remark + '\'' +
-                ", subject='" + subject + '\'' +
-//                ", picture='" + picture + '\'' +
-                ", analysis='" + analysis + '\'' +
-                ", type='" + type + '\'' +
-                ", difficulty='" + difficulty + '\'' +
-                ", isClassic='" + isClassic + '\'' +
-                ", state='" + state + '\'' +
-                ", reviewStatus='" + reviewStatus + '\'' +
-                ", createTime=" + createTime +
-                ", company=" + company +
-                ", catalog=" + catalog +
-                '}';
+    public void setCreateUser(User user) {
+        this.createUser = user;
     }
 }

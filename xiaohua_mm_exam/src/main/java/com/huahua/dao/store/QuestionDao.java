@@ -16,15 +16,15 @@ import java.util.List;
 public interface QuestionDao {
 
 //
-//    @Select("select\n" +
-//            "id,subject,type,RAND() as r\n" +
-//            "from st_question\n" +
-//            "order by r \n" +
-//            " limit 0,10")
-            @Select("select\n" +
-            "id,subject,type\n" +
+    @Select("select\n" +
+            "id,subject,type,RAND() as r\n" +
             "from st_question\n" +
-            "where id='661' or id='Q3540398435'")/**/
+            "order by r \n" +
+            " limit 0,10")
+//            @Select("select\n" +
+//            "id,subject,type\n" +
+//            "from st_question\n" +
+//            "where id='661' or id='Q3540398435'")/**/
     @Results({
             @Result(column="id", property="id"),
             @Result(column="subject", property="subject"),

@@ -29,7 +29,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(User user) {
-
         try {
             //id使用UUID的生成策略来获取
             String uuid = UUID.randomUUID().toString();

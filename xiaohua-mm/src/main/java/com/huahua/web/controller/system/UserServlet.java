@@ -1,10 +1,8 @@
 package com.huahua.web.controller.system;
 
 import com.github.pagehelper.PageInfo;
-import com.huahua.domain.system.Dept;
+import com.huahua.domain.system.*;
 import com.huahua.domain.system.Module;
-import com.huahua.domain.system.Role;
-import com.huahua.domain.system.User;
 import com.huahua.utils.BeanUtil;
 import com.huahua.web.controller.BaseServlet;
 import org.apache.commons.lang3.StringUtils;
@@ -15,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.Inet4Address;
 import java.util.List;
 
 
@@ -191,7 +190,12 @@ public class UserServlet extends BaseServlet {
         String pwd = request.getParameter("password");
 
         User user = userService.login(email, pwd);
+        SysLog sysLog = new SysLog();
         if (user != null) {
+            String ip4 = Inet4Address.getLocalHost().getHostAddress();
+            sysLog.setUserId(user.getId());
+            sysLog.setIp(ip4);
+            sysLogService.save(sysLog);
             request.getSession().setAttribute("loginUser", user);
             //如果登录成功，加载该用户对应的角色对应的所有模块
             List<Module> moduleList = userService.findMoudeleById(user.getId());
@@ -203,12 +207,13 @@ public class UserServlet extends BaseServlet {
                 sbf.append(m.getCurl());
                 sbf.append(',');
             }
-            System.out.println(sbf.toString());
             request.getSession().setAttribute("authorStr",sbf.toString());
+            request.getSession().removeAttribute("error");
             //跳转到主界面
             request.getRequestDispatcher("/WEB-INF/pages/home/main.jsp").forward(request, response);
         } else {
 //            request.setAttribute("msg", "密码或用户名输入错误！请重新输入");
+            request.getSession().setAttribute("error","用户名或密码错误，请检查后再试！");
             response.sendRedirect(request.getContextPath() + "/login.jsp");
         }
     }

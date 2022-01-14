@@ -20,7 +20,6 @@ public class User {
     private Date joinDate;      //入职时间
     private String deptId;      //部门id
 
-
     private Dept dept;
 
     public Date getJoinDate() {

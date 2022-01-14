@@ -28,10 +28,14 @@ public class MemberServlet extends BaseServlet {
     public Result login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Member member = getData(request, Member.class);
         member = memberService.login(member.getEmail(), member.getPassword());
-        if (member != null) {
+        if (member != null && "1".equals(member.getState())) {
             return new Result("登录成功！", member);
         } else {
-            return new Result("用户名或密码错误,请检查后重试", false, null, Code.LOGIN_FAIL);
+            if(member == null) {
+                return new Result("用户名或密码错误,请检查后重试！", false, null, Code.LOGIN_FAIL);
+            }else{
+                return new Result("您的账号已被禁用，请联系管理员！", false, null, Code.LOGIN_FAIL);
+            }
         }
     }
 

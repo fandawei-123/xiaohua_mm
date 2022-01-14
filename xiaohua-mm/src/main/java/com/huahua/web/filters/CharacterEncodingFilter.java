@@ -45,6 +45,7 @@ public class CharacterEncodingFilter implements Filter {
             request.setCharacterEncoding(encoding);
             //5.设置响应对象输出响应正文时的字符集
             response.setContentType("text/html;charset=UTF-8");
+            response.setContentType("textarea/html;charset=UTF-8");
             //6.放行
             chain.doFilter(request,response);
         }catch (Exception e){

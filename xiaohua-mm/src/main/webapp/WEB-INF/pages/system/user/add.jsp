@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ include file="../../base.jsp"%>
+<%@ include file="../../base.jsp" %>
 <!DOCTYPE html>
 <html>
 
@@ -26,7 +26,8 @@
             <small>用户管理</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="${ctx}"><i class="fa fa-dashboard"></i> 首页</a></li>
+            <li><a href="${ctx}/system/user?operation=home"><i class="fa fa-dashboard"></i> 首页
+            </a></li>
             <li><a href="${ctx}/system/user?operation=list">用户列表</a></li>
         </ol>
     </section>
@@ -58,10 +59,13 @@
 
                     <div class="col-md-2 title">所在部门</div>
                     <div class="col-md-4 data">
-                        <select class="form-control" onchange="document.getElementById('deptName').value=this.options[this.selectedIndex].text" name="deptId">
+                        <select class="form-control"
+                                onchange="document.getElementById('deptName').value=this.options[this.selectedIndex].text"
+                                name="deptId">
                             <option value="">请选择</option>
                             <c:forEach items="${deptList}" var="item">
-                                <option ${requestScope.user.deptId == item.id ?'selected':''} value="${item.id}">${item.deptName}</option>
+                                <option ${requestScope.user.deptId == item.id ?'selected':''}
+                                        value="${item.id}">${item.deptName}</option>
                             </c:forEach>
                         </select>
                     </div>
@@ -69,8 +73,10 @@
                     <div class="col-md-2 title">性别</div>
                     <div class="col-md-4 data">
                         <div class="form-group form-inline">
-                            <div class="radio"><label><input type="radio" ${requestScope.user.gender==0?'checked':''} name="gender" value="0">男</label></div>
-                            <div class="radio"><label><input type="radio" ${requestScope.user.gender==1?'checked':''} name="gender" value="1">女</label></div>
+                            <div class="radio"><label><input type="radio" ${requestScope.user.gender==0?'checked':''}
+                                                             name="gender" value="0">男</label></div>
+                            <div class="radio"><label><input type="radio" ${requestScope.user.gender==1?'checked':''}
+                                                             name="gender" value="1">女</label></div>
                         </div>
                     </div>
 
@@ -88,14 +94,18 @@
                     <div class="col-md-2 title">状态</div>
                     <div class="col-md-4 data">
                         <div class="form-group form-inline">
-                            <div class="radio"><label><input type="radio" ${requestScope.user.state==0?'checked':''} name="state" value="0">停用</label></div>
-                            <div class="radio"><label><input type="radio" ${requestScope.user.state==1?'checked':'checked'} name="state" value="1">启用</label></div>
+                            <div class="radio"><label><input type="radio" ${requestScope.user.state==0?'checked':''}
+                                                             name="state" value="0">停用</label></div>
+                            <div class="radio"><label><input
+                                    type="radio" ${requestScope.user.state==1?'checked':'checked'} name="state"
+                                    value="1">启用</label></div>
                         </div>
                     </div>
 
                     <div class="col-md-2 title">电话</div>
                     <div class="col-md-4 data">
-                        <input type="text" class="form-control" placeholder="电话" name="telephone" value="${requestScope.user.telephone}">
+                        <input type="text" class="form-control" placeholder="电话" name="telephone"
+                               value="${requestScope.user.telephone}">
                     </div>
 
                     <div class="col-md-2 title">入职时间</div>
@@ -104,7 +114,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" placeholder="入职时间"  name="joinDate" class="form-control pull-right"
+                            <input type="text" placeholder="入职时间" name="joinDate" class="form-control pull-right"
                                    value="${requestScope.user.joinDate}" id="datepicker">
                         </div>
                     </div>
@@ -116,7 +126,8 @@
 
         <!--工具栏-->
         <div class="box-tools text-center">
-            <button type="button" onclick='document.getElementById("editForm").submit()' class="btn bg-maroon">保存</button>
+            <button type="button" onclick='document.getElementById("editForm").submit()' class="btn bg-maroon">保存
+            </button>
             <button type="button" class="btn bg-default" onclick="history.back(-1);">返回</button>
         </div>
         <!--工具栏/-->

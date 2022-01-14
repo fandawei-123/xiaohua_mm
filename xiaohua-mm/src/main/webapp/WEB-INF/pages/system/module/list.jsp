@@ -35,8 +35,8 @@
         </h1>
         <ol class="breadcrumb">
             <li>
-                <button onclick='location.href="${ctx}/system/user?operation=home"'><i class="fa fa-dashboard"></i> 首页
-                </button>
+                <a href="${ctx}/system/user?operation=home"><i class="fa fa-dashboard"></i> 首页
+                </a>
             </li>
         </ol>
     </section>
@@ -91,7 +91,6 @@
                         <tr>
                             <c:if test="${sessionScope.authorStr.contains('system/module?operation=delete')}">
                                 <th class="" style="padding-right:0px;">
-                                    <input type="checkbox" name="selid" onclick="checkAll('id',this)">
                                 </th>
                             </c:if>
                             <th class="sorting">模块名</th>

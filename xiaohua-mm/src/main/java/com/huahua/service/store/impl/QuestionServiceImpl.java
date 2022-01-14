@@ -2,7 +2,9 @@ package com.huahua.service.store.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.huahua.dao.store.ExamineLogDao;
 import com.huahua.dao.store.QuestionDao;
+import com.huahua.domain.store.ExamineLog;
 import com.huahua.domain.store.Question;
 import com.huahua.service.store.QuestionService;
 import org.apache.poi.ss.usermodel.*;
@@ -25,6 +27,8 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Resource
     private QuestionDao questionDao;
+    @Resource
+    private ExamineLogDao examineLogDao;
 
     @Override
     public String save(Question question, boolean flag) {
@@ -63,7 +67,7 @@ public class QuestionServiceImpl implements QuestionService {
     public void delete(Question question) {
 
         try {
-
+            examineLogDao.deleteByQuestionId(question.getId());
             //调用Dao层操作
             questionDao.delete(question);
         } catch (Exception e) {

@@ -44,8 +44,8 @@
         </h1>
         <ol class="breadcrumb">
             <li>
-                <button onclick='location.href="${ctx}/system/user?operation=home"'><i class="fa fa-dashboard"></i> 首页
-                </button>
+                <a href="${ctx}/system/user?operation=home"><i class="fa fa-dashboard"></i> 首页
+                </a>
             </li>
         </ol>
     </section>

@@ -4,6 +4,7 @@ package com.huahua.dao.store;
 import com.huahua.domain.store.Catalog;
 import com.huahua.domain.store.Company;
 import com.huahua.domain.store.Question;
+import com.huahua.domain.system.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -42,9 +43,12 @@ public interface QuestionDao {
             "where id = #{id}")
     void update(Question question);
 
+    @Update("update st_question set review_status=#{status} where id=#{questionId}")
+    void updateReviewStatus(@Param("status") String status, @Param("questionId") String questionId);
+
     @Select("select\n" +
             "id, catalog_id, company_id, remark,subject,analysis,type, difficulty, is_classic,\n" +
-            "state, review_status, create_time, picture\n" +
+            "state, review_status, create_time, picture,create_by\n" +
             "from st_question\n" +
             "where id = #{id}")
     @Results({
@@ -69,6 +73,11 @@ public interface QuestionDao {
                     javaType = Catalog.class,
                     column = "catalog_id",
                     many = @Many(select = "com.huahua.dao.store.CatalogDao.findById")
+            ),
+            @Result(property = "createUser",
+                    javaType = User.class,
+                    column = "create_by",
+                    many = @Many(select = "com.huahua.dao.system.UserDao.findById")
             )
     })
     Question findById(String id);
@@ -76,7 +85,7 @@ public interface QuestionDao {
 
     @Select("select\n" +
             "id, catalog_id, company_id, remark,subject,analysis,type, difficulty, is_classic,\n" +
-            "state, review_status, create_time, picture\n" +
+            "state, review_status, create_time, picture,create_by\n" +
             "from st_question\n" +
             "order by create_time desc")
     @Results({
@@ -92,6 +101,7 @@ public interface QuestionDao {
             @Result(property = "reviewStatus", column = "review_status"),
             @Result(property = "createTime", column = "create_time"),
             @Result(property = "picture", column = "picture"),
+            @Result(property = "createUserId", column = "create_by"),
             @Result(property = "company",
                     javaType = Company.class,
                     column = "company_id",
@@ -101,7 +111,13 @@ public interface QuestionDao {
                     javaType = Catalog.class,
                     column = "catalog_id",
                     many = @Many(select = "com.huahua.dao.store.CatalogDao.findById")
+            ),
+            @Result(property = "createUser",
+                    javaType = User.class,
+                    column = "create_by",
+                    many = @Many(select = "com.huahua.dao.system.UserDao.findById")
             )
     })
     List<Question> findAll();
+
 }

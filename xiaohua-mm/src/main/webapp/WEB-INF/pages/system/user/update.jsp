@@ -27,7 +27,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="${ctx}"><i class="fa fa-dashboard"></i> 首页</a></li>
-            <li><a href="${ctx}/system/user/list.do">用户列表</a></li>
+            <li><a href="${ctx}/system/user?operation=list">用户列表</a></li>
         </ol>
     </section>
     <!-- 内容头部 /-->
