@@ -9,9 +9,19 @@ import com.huahua.dao.system.UserDao;
 import com.huahua.domain.store.ExamineLog;
 import com.huahua.domain.store.Question;
 import com.huahua.service.store.ExamineLogService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -28,6 +38,7 @@ public class ExamineLogServiceImpl implements ExamineLogService {
     private QuestionDao questionDao;
     @Resource
     private UserDao userDao;
+
 
     @Override
     public void save(ExamineLog examineLog) {
@@ -46,9 +57,8 @@ public class ExamineLogServiceImpl implements ExamineLogService {
             //添加时间
             examineLog.setReviewTime(new Date());
 
-
-            //2.调用Dao层操作
             examineLogDao.save(examineLog);
+
             questionDao.updateReviewStatus(examineLog.getStatus(), examineLog.getQuestionId());
             //3.提交事务
         } catch (Exception e) {
@@ -69,9 +79,10 @@ public class ExamineLogServiceImpl implements ExamineLogService {
         }
     }
 
+
     @Override
     public void update(ExamineLog examineLog) {
-        //调用Dao层操作
+
         examineLogDao.update(examineLog);
         questionDao.updateReviewStatus(examineLog.getStatus(), examineLog.getQuestionId());
     }

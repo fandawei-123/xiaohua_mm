@@ -19,6 +19,7 @@ import java.util.Map;
 /**
  * @author Huahua
  */
+@SuppressWarnings("all")
 @WebServlet("/system/role")
 @Component
 public class RoleServlet extends BaseServlet {

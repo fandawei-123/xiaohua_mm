@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 public class BaseServlet extends HttpServlet {
 
 
+
     protected CompanyService companyService;
     protected DeptService deptService;
     protected UserService userService;

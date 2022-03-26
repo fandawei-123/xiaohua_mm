@@ -1,9 +1,12 @@
 package com.huahua.config;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.*;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.sql.DataSource;
 
 /**
  * @author Huahua
@@ -13,4 +16,10 @@ import org.springframework.context.annotation.PropertySource;
 @ComponentScan("com.huahua")
 @PropertySource("classpath:jdbc.properties")
 @Import({JDBCConfig.class,MyBatisConfig.class})
-public class SpringConfig {}
+@EnableTransactionManagement
+public class SpringConfig {
+    @Bean("transactionManager")
+    public PlatformTransactionManager getTransactionManager(@Autowired DataSource dataSource){
+        return new DataSourceTransactionManager(dataSource);
+    }
+}

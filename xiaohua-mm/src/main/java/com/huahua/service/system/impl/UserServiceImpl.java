@@ -8,6 +8,10 @@ import com.huahua.domain.system.Module;
 import com.huahua.domain.system.User;
 import com.huahua.service.system.UserService;
 import com.huahua.utils.MD5Util;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -21,6 +25,8 @@ import java.util.UUID;
 @Component("userService")
 public class UserServiceImpl implements UserService {
 
+    @Autowired
+    private SqlSessionFactory sqlSessionFactory;
     @Resource
     private UserDao userDao;
 
@@ -44,6 +50,7 @@ public class UserServiceImpl implements UserService {
             //密码必须经过加密处理
             user.setPassword(MD5Util.code(user.getPassword()));
             //2.调用Dao层操作
+
             userDao.save(user);
 
         } catch (Exception e) {
@@ -101,6 +108,8 @@ public class UserServiceImpl implements UserService {
     public PageInfo findAll(int page, int size) {
         try {
             //3.调用Dao层操作
+            SqlSession sqlSession = sqlSessionFactory.openSession(true);
+            UserDao userDao = sqlSession.getMapper(UserDao.class);
             PageHelper.startPage(page, size);
             List<User> all = userDao.findAll();
             return new PageInfo(all);

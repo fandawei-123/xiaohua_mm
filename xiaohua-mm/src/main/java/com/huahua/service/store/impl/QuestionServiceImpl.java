@@ -10,9 +10,17 @@ import com.huahua.service.store.QuestionService;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 import java.io.ByteArrayOutputStream;
 import java.util.Date;
 import java.util.List;
@@ -70,6 +78,7 @@ public class QuestionServiceImpl implements QuestionService {
             examineLogDao.deleteByQuestionId(question.getId());
             //调用Dao层操作
             questionDao.delete(question);
+
         } catch (Exception e) {
             throw new RuntimeException(e);
             //记录日志
@@ -147,9 +156,6 @@ public class QuestionServiceImpl implements QuestionService {
         cs_field.setBorderLeft(BorderStyle.THIN);
         cs_field.setBorderRight(BorderStyle.THIN);
         cs_field.setBorderTop(BorderStyle.THIN);
-//        for (int i = 1; i < 12; i++) {
-//            sheet.setColumnWidth();
-//        }
 
         //制作标题
         sheet.addMergedRegion(new CellRangeAddress(1, 1, 1, 12));

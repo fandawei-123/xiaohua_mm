@@ -13,6 +13,7 @@ com\huahua\utils\MD5Util.class
 com\huahua\web\controller\front\MemberServlet.class
 com\huahua\dao\front\ExamQuestionDao.class
 com\huahua\dao\front\ExamPaperDao.class
+com\huahua\config\RedisConfig.class
 com\huahua\service\front\impl\ExamServiceImpl.class
 com\huahua\web\controller\Code.class
 com\huahua\web\fifters\CharacterEncodingFilter.class

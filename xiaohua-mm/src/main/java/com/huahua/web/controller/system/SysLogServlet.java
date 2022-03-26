@@ -15,6 +15,7 @@ import java.io.IOException;
 /**
  * @author Huahua
  */
+@SuppressWarnings("all")
 @WebServlet("/system/sysLog")
 @Component
 public class SysLogServlet extends BaseServlet {

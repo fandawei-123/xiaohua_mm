@@ -40,7 +40,7 @@ public interface SysLogDao {
     SysLog findById(String id);
 
 
-    @Select("select * from ss_sys_log")
+    @Select("select * from ss_sys_log ORDER BY time DESC")
     @Results({
             @Result(property = "id", column = "id"),
             @Result(property = "userId", column = "uid"),

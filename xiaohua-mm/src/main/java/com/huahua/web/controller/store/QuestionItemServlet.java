@@ -23,6 +23,7 @@ import java.util.List;
 /**
  * @author Huahua
  */
+@SuppressWarnings("all")
 @WebServlet("/store/questionItem")
 @Component
 public class QuestionItemServlet extends BaseServlet {

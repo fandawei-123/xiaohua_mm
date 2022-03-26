@@ -18,6 +18,7 @@ import java.io.IOException;
 /**
  * @author Huahua
  */
+@SuppressWarnings("all")
 @WebServlet("/store/company")
 @Component
 public class CompanyServlet extends BaseServlet {

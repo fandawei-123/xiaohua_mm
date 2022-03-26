@@ -17,6 +17,7 @@ import java.util.List;
 /**
  * @author Huahua
  */
+@SuppressWarnings("all")
 @WebServlet("/system/module")
 @Component
 public class ModuleServlet extends BaseServlet {

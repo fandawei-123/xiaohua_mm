@@ -2,6 +2,8 @@ package com.huahua.service.store;
 
 import com.github.pagehelper.PageInfo;
 import com.huahua.domain.store.ExamineLog;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,6 +17,7 @@ public interface ExamineLogService {
      * @param examineLog
      * @return
      */
+    @Transactional
     void save(ExamineLog examineLog);
 
     /**
@@ -29,6 +32,7 @@ public interface ExamineLogService {
      * @param examineLog
      * @return
      */
+    @Transactional
     void update(ExamineLog examineLog);
 
 

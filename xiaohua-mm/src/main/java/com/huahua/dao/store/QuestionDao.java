@@ -18,11 +18,11 @@ public interface QuestionDao {
 
 
     @Insert("insert into st_question(id, company_id, catalog_id, remark, subject, analysis, type,\n" +
-            "difficulty, is_classic, state, review_status, create_time, picture)\n" +
+            "difficulty, is_classic, state, review_status, create_time, picture,create_by)\n" +
             "values (#{id}, #{companyId}, #{catalogId},\n" +
             "#{remark}, #{subject}, #{analysis},\n" +
             "#{type}, #{difficulty}, #{isClassic},\n" +
-            "#{state}, #{reviewStatus}, #{createTime}, #{picture})")
+            "#{state}, #{reviewStatus}, #{createTime}, #{picture}, #{createUserId})")
     void save(Question question);
 
     @Delete("delete from st_question where id = #{id}")
@@ -39,7 +39,8 @@ public interface QuestionDao {
             "difficulty = #{difficulty},\n" +
             "is_classic = #{isClassic},\n" +
             "picture = #{picture},\n" +
-            "state = #{state}\n" +
+            "state = #{state},\n" +
+            "type = #{type}\n" +
             "where id = #{id}")
     void update(Question question);
 

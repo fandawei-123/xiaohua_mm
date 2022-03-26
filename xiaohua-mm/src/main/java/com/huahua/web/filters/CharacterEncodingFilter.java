@@ -14,6 +14,7 @@ import java.io.IOException;
  * @author 小花
  * @Company 小花时代
  */
+@SuppressWarnings("all")
 @Component
 @WebFilter(value = "/*",initParams={@WebInitParam(name = "encoding",value = "UTF-8")})
 public class CharacterEncodingFilter implements Filter {

@@ -11,13 +11,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
+
 
 //uri:/store/examineLog?operation=list
 
 /**
  * @author Huahua
  */
+@SuppressWarnings("all")
 @WebServlet("/store/examineLog")
 @Component
 public class ExamineLogServlet extends BaseServlet {

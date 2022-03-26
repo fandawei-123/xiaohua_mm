@@ -9,6 +9,7 @@ import org.springframework.context.annotation.*;
 @Configuration
 @ComponentScan("com.huahua")
 @PropertySource("classpath:jdbc.properties")
-@Import({JDBCConfig.class,MyBatisConfig.class})
+@PropertySource("classpath:jedis.properties")
+@Import({JDBCConfig.class,MyBatisConfig.class/*,RedisConfig.class*/})
 public class SpringConfig {
 }

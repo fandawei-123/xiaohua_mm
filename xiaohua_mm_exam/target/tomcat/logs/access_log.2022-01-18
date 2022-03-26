@@ -1,0 +1,10 @@
+0:0:0:0:0:0:0:1 - - [18/Jan/2022:10:22:12 +0800] "POST /member/checkLogin HTTP/1.1" 500 7949 http-bio-82-exec-1 323
+0:0:0:0:0:0:0:1 - - [18/Jan/2022:10:22:12 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-82-exec-2 7
+0:0:0:0:0:0:0:1 - - [18/Jan/2022:10:23:41 +0800] "POST /member/checkLogin HTTP/1.1" 200 39 http-bio-82-exec-2 1015
+0:0:0:0:0:0:0:1 - - [18/Jan/2022:10:23:43 +0800] "GET /login.html HTTP/1.1" 304 - http-bio-82-exec-3 18
+0:0:0:0:0:0:0:1 - - [18/Jan/2022:10:23:43 +0800] "GET /element-ui/lib/theme-chalk/lib/theme-chalk/fonts/element-icons.woff HTTP/1.1" 404 1085 http-bio-82-exec-4 2
+0:0:0:0:0:0:0:1 - - [18/Jan/2022:10:23:43 +0800] "GET /element-ui/lib/theme-chalk/lib/theme-chalk/fonts/element-icons.ttf HTTP/1.1" 404 1083 http-bio-82-exec-5 0
+0:0:0:0:0:0:0:1 - - [18/Jan/2022:10:23:45 +0800] "POST /member/login HTTP/1.1" 200 332 http-bio-82-exec-6 456
+0:0:0:0:0:0:0:1 - - [18/Jan/2022:10:23:46 +0800] "POST /member/checkLogin HTTP/1.1" 200 58 http-bio-82-exec-7 1
+0:0:0:0:0:0:0:1 - - [18/Jan/2022:10:23:48 +0800] "GET /paper.html HTTP/1.1" 304 - http-bio-82-exec-8 94
+0:0:0:0:0:0:0:1 - - [18/Jan/2022:10:23:48 +0800] "POST /exam/getPaper HTTP/1.1" 200 1237 http-bio-82-exec-9 113

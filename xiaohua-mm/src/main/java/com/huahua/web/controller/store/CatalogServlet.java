@@ -19,6 +19,7 @@ import java.util.List;
 /**
  * @author Huahua
  */
+@SuppressWarnings("all")
 @WebServlet("/store/catalog")
 @Component
 public class CatalogServlet extends BaseServlet {

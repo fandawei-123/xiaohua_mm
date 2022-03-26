@@ -31,6 +31,7 @@ import java.util.List;
 /**
  * @author Huahua
  */
+@SuppressWarnings("all")
 @WebServlet("/store/question")
 @Component
 public class QuestionServlet extends BaseServlet {
@@ -210,8 +211,10 @@ public class QuestionServlet extends BaseServlet {
             //将数据获取到，封装成一个对象
             Question question = BeanUtil.fillBean(fileItems, Question.class);
             String picture = question.getId();
+            User loginUser = (User) request.getSession().getAttribute("loginUser");
             if (save.equals(op)) {
                 //调用业务层接口save
+                question.setCreateUserId(loginUser.getId());
                 picture = questionService.save(question, flag);
             } else {
                 questionService.update(question, flag);

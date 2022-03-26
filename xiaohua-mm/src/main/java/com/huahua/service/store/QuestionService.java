@@ -2,6 +2,7 @@ package com.huahua.service.store;
 
 import com.github.pagehelper.PageInfo;
 import com.huahua.domain.store.Question;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.ByteArrayOutputStream;
 import java.util.List;
@@ -24,6 +25,7 @@ public interface QuestionService {
      * @param question
      * @return
      */
+    @Transactional
     void delete(Question question);
 
     /**
